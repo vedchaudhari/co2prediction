@@ -1,0 +1,24 @@
+<div class="login">
+    <h1>Predict Co2 Emission of Vehicles</h1>
+    <h3>Enter the following values to predict </h3>
+
+    <form action="{{url_for('predict')}}" method="post">
+        <input type="number" name="enginesize" placeholder="Engine Size" required="required" step="any"/>
+
+        <input type="number" name="cylinders" placeholder="Cylinders" required="required"/>
+
+        <input type="number" name="fuel" placeholder="Fuel" required="required" step="any"/>
+
+        <button type="submit" class="btn">Predict</button>
+
+    </form>
+
+    <br> 
+    <br> 
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    {{prediction_text}}
+</div>
