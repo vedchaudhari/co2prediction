@@ -1,24 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict CO2 Emission of Vehicles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: url('https://img.freepik.com/free-psd/realistic-clouds-isolated_23-2150364263.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .login {
+            width: 100%;
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Ensure z-index works */
+            z-index: 1; /* Ensure it's above the cloud-fumes */
+            text-align: center; /* Center align contents */
+        }
+
+        .login h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .login form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .login form button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Media Queries */
+        @media only screen and (min-width: 600px) {
+            .login {
+                width: 80%;
+            }
+        }
+
+        @media only screen and (min-width: 900px) {
+            .login {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
 <div class="login">
-    <h1>Predict Co2 Emission of Vehicles</h1>
-    <h3>Enter the following values to predict </h3>
+    <h1>Predict CO2 Emission of Vehicles</h1>
+    <h3>Enter the following values to predict</h3>
 
     <form action="{{url_for('predict')}}" method="post">
         <input type="number" name="enginesize" placeholder="Engine Size" required="required" step="any"/>
-
+        <br> <!-- Add line break for better spacing -->
         <input type="number" name="cylinders" placeholder="Cylinders" required="required"/>
-
+        <br> <!-- Add line break for better spacing -->
         <input type="number" name="fuel" placeholder="Fuel" required="required" step="any"/>
-
+        <br> <!-- Add line break for better spacing -->
         <button type="submit" class="btn">Predict</button>
-
     </form>
 
-    <br> 
-    <br> 
+    <br>
+    <br>
 
     {% if error_message %}
-        <p style="color: red;">{{ error_message }}</p>
+    <p class="error-message">{{ error_message }}</p>
     {% endif %}
 
     {{prediction_text}}
 </div>
+</body>
+</html>
