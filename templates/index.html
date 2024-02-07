@@ -95,12 +95,12 @@
     <h1>Predict CO2 Emission of Vehicles</h1>
     <h3>Enter the following values to predict</h3>
 
-    <form action="{{url_for('predict')}}" method="post">
-        <input type="number" name="enginesize" placeholder="Engine Size" required="required" step="any"/>
+    <form action="{{ url_for('predict') }}" method="post">
+        <input type="number" name="enginesize" placeholder="Engine Size" required="required" step="any" value="{{ request.form.enginesize if request.form.enginesize is defined else '' }}" />
         <br> <!-- Add line break for better spacing -->
-        <input type="number" name="cylinders" placeholder="Cylinders" required="required"/>
+        <input type="number" name="cylinders" placeholder="Cylinders" required="required" value="{{ request.form.cylinders if request.form.cylinders is defined else '' }}" />
         <br> <!-- Add line break for better spacing -->
-        <input type="number" name="fuel" placeholder="Fuel" required="required" step="any"/>
+        <input type="number" name="fuel" placeholder="Fuel" required="required" step="any" value="{{ request.form.fuel if request.form.fuel is defined else '' }}" />
         <br> <!-- Add line break for better spacing -->
         <button type="submit" class="btn">Predict</button>
     </form>
